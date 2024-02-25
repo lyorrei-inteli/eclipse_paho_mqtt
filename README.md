@@ -1,45 +1,47 @@
-# Simulador de Dispositivos IoT com MQTT
+# Integração simulador com HiveMQ
 
-Este projeto é um simulador de dispositivos IoT que utiliza o protocolo MQTT para publicar dados de sensores simulados. Atualmente, suporta a simulação de um sensor de radiação solar.
+Este repositório contém um simulador de dispositivos IoT para sensor de radiação solar e um conjunto de testes automatizados para validar o simulador. O simulador publica dados simulados de um sensor de radiação solar no HiveMQ. O assinante escuta as mensagens publicadas no tópico MQTT e imprime as mensagens recebidas.
 
-## Pré-requisitos
+## Como instalar
 
-- Python 3.x
-- Biblioteca Paho MQTT
-
-## Instalação
-
-Instale as dependências necessárias:
+Após clonar o repositório, navegue até a pasta do projeto e instale as dependências necessárias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Execução
+## Como rodar o sistema
 
-Para executar o simulador, você precisará iniciar tanto o publisher quanto o subscriber.
-
-### Iniciar o Publisher
-
-Abra um terminal e navegue até o diretório do projeto. Execute o seguinte comando:
+Para iniciar o simulador, execute o seguinte comando:
 
 ```bash
 python3 publisher.py
 ```
 
-### Iniciar o Subscriber
-
-Abra um novo terminal e execute o seguinte comando:
+Para iniciar o subscriber que irá ouvir as mensagens publicadas pelo simulador, abra um novo terminal e execute:
 
 ```bash
 python3 subscriber.py
 ```
 
-Você deverá ver mensagens sendo publicadas pelo publisher e recebidas pelo subscriber.
+## Executar os Testes
 
-## Demonstração
-[Link do vídeo](https://youtu.be/mvigfNvgJ_4)
+Para executar os testes automatizados, use o seguinte comando:
 
-## Extensões
+```bash
+pytest tests/
+```
 
-O sistema foi projetado com abstrações que permitem a fácil adição de novos tipos de sensores. Para adicionar um novo sensor, crie uma nova classe que herda de `SensorSimulator` e implemente o método `simulate_data`.
+## Demonstração do Sistema
+
+Demonstração dos Publishers e Subscribers: [Link do vídeo](https://youtu.be/mvigfNvgJ_4) <br/>
+Demonstração dos testes: [Link do vídeo](https://youtu.be/P0oVfgMh7zs) <br/>
+Demonstração do HiveMQ: [Link do vídeo](https://youtu.be/9e3lP3gzc_A)
+
+## Estrutura do Projeto
+
+- `publisher.py`: Contém o código do publicador que envia dados simulados de um sensor de radiação solar para um broker MQTT.
+- `subscriber.py`: Contém o código do assinante que escuta e imprime as mensagens do tópico MQTT.
+- `sensor_simulator.py`: Define a classe `SolarRadiationSensorSimulator` que simula dados de radiação solar.
+- `tests/`: Pasta contendo os testes automatizados para o simulador.
+  - `test_sensor_simulator.py`: Testes automatizados para validar as funcionalidades do simulador.

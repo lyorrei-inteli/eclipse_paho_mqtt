@@ -1,8 +1,7 @@
 import abc
-import time
-import random
 import math
-import paho.mqtt.client as mqtt
+import random
+import time
 
 class SensorSimulator(abc.ABC):
     def __init__(self, topic):

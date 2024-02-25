@@ -1,4 +1,5 @@
-import paho.mqtt.client as mqtt
+import paho.mqtt.client as paho
+from paho import mqtt
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -16,7 +17,7 @@ def on_connect(client, userdata, flags, rc, _):
     print("Conectado com o código de retorno: ", rc)
     client.subscribe(topic)
 
-client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, "python_subscriber", protocol=mqtt.MQTTv5)
+client = paho.Client(paho.CallbackAPIVersion.VERSION2, "python_subscriber", protocol=paho.MQTTv5)
 client.on_connect = on_connect
 
 # Configurações de TLS
