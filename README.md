@@ -12,6 +12,14 @@ pip install -r requirements.txt
 
 ## Como rodar o sistema
 
+Crie um arquivo `.env` na root do projeto e preencha as váriaveis de ambiente no arquivo com as informações do seu broker MQTT. O arquivo `.env` deve conter as seguintes variáveis:
+
+```bash
+BROKER_ADDR=...
+HIVE_USER=...
+HIVE_PSWD=...
+```
+
 Para iniciar o simulador, execute o seguinte comando:
 
 ```bash
